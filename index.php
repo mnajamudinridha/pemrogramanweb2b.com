@@ -15,9 +15,9 @@ $dosen = mysqli_query($con, "SELECT * FROM dosen");
 
 echo "<br>";
 echo "<table style='border: 1px solid black'>";
-echo "<tr><th>NIP</th><th>Nama Dosen</th></tr>";
+echo "<tr><th>NIP</th><th>Nama Dosen</th><th>Alamat</th></tr>";
 while ($data = mysqli_fetch_array($dosen)) {
-  echo "<tr><td>" . $data['nip'] . "</td><td>" . $data['nama'] . "</td></tr>";
+  echo "<tr><td>" . $data['nip'] . "</td><td>" . $data['nama'] . "</td><td>" . $data['alamat'] . "</td></tr>";
 }
 echo "</table>";
 ?>
