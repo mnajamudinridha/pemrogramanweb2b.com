@@ -21,10 +21,11 @@
   $con = mysqli_connect('localhost', 'root', '', 'teknologiinformasi');
 
   echo "<br>";
-  echo "<form action='index.php' method='post'>
+  echo "<form action='index.php' method='get'>
   Cari : <input type='text' name='cari'/><input type='submit' value='cari'/></form>";
-  if (isset($_POST['cari'])) {
-    $dosen = mysqli_query($con, "SELECT * FROM dosen WHERE nama LIKE '%" . $_POST['cari'] . "%' or alamat LIKE '%" . $_POST['cari'] . "%'");
+  if (isset($_GET['cari'])) {
+    $dosen = mysqli_query($con, "SELECT * FROM dosen WHERE nama LIKE '%" . $_GET['cari'] . "%' or alamat LIKE '%" . $_GET['cari'] . "%'");
+    echo "<br>SELECT * FROM dosen WHERE nama LIKE '%" . $_GET['cari'] . "%' or alamat LIKE '%" . $_GET['cari'] . "%'";
   } else {
     $dosen = mysqli_query($con, "SELECT * FROM dosen");
   }
