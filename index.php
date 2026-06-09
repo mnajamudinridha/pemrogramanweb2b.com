@@ -19,9 +19,16 @@
   }
 
   $con = mysqli_connect('localhost', 'root', '', 'teknologiinformasi');
-  $dosen = mysqli_query($con, "SELECT * FROM dosen");
 
   echo "<br>";
+  echo "<form action='index.php' method='post'>
+  Cari : <input type='text' name='cari'/><input type='submit' value='cari'/></form>";
+  if (isset($_POST['cari'])) {
+    $dosen = mysqli_query($con, "SELECT * FROM dosen WHERE nama LIKE '%" . $_POST['cari'] . "%' or alamat LIKE '%" . $_POST['cari'] . "%'");
+  } else {
+    $dosen = mysqli_query($con, "SELECT * FROM dosen");
+  }
+
   echo "<table style='border: 1px solid black'>";
   echo "<tr><th>NIP</th><th>Nama Dosen</th><th>Alamat</th></tr>";
   while ($data = mysqli_fetch_array($dosen)) {
